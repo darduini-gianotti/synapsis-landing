@@ -3192,7 +3192,7 @@
             </div>
             <div>
               <label class="block font-semibold text-slate-300 mb-1">WhatsApp de Contato (com DDD) *</label>
-              <input type="tel" id="pageWhatsapp" required placeholder="(11) 99999-8888" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-teal-400 focus:outline-none transition">
+              <input type="tel" id="pageWhatsapp" required placeholder="(11) 99999-8888" maxlength="15" autocomplete="tel" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-teal-400 focus:outline-none transition">
             </div>
           </div>
 
@@ -3972,6 +3972,45 @@
       }
     });
 
+    // Formatação automática em tempo real do WhatsApp / Celular: (DD) 9XXXX-XXXX
+    function formatWhatsAppInput(input) {
+      if (!input) return;
+      input.addEventListener('input', (e) => {
+        let val = e.target.value.replace(/\D/g, '');
+        if (val.length > 11) val = val.slice(0, 11);
+
+        let formatted = '';
+        if (val.length > 0) {
+          formatted = '(' + val.substring(0, 2);
+        }
+        if (val.length >= 3) {
+          formatted += ') ';
+          if (val.length > 7) {
+            formatted += val.substring(2, 7) + '-' + val.substring(7);
+          } else {
+            formatted += val.substring(2);
+          }
+        }
+        e.target.value = formatted;
+      });
+    }
+
+    function initWhatsAppMasks() {
+      ['pageWhatsapp', 'modalWhatsapp'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el && !el.dataset.masked) {
+          el.dataset.masked = 'true';
+          formatWhatsAppInput(el);
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initWhatsAppMasks);
+    } else {
+      initWhatsAppMasks();
+    }
+
     // Handle Waitlist Form Submission (both in-page form and modal)
     async function handleWaitlistSubmit(e, source) {
       e.preventDefault();
@@ -4107,7 +4146,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
           <div>
             <label class="block font-semibold text-slate-300 mb-1">WhatsApp de Contato (com DDD) *</label>
-            <input type="tel" id="modalWhatsapp" required placeholder="(11) 99999-8888" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-teal-400 focus:outline-none transition">
+            <input type="tel" id="modalWhatsapp" required placeholder="(11) 99999-8888" maxlength="15" autocomplete="tel" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-teal-400 focus:outline-none transition">
           </div>
           <div>
             <label class="block font-semibold text-slate-300 mb-1">E-mail Profissional *</label>
