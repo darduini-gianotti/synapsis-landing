@@ -82,6 +82,13 @@
       0%, 100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
   </style>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
@@ -111,6 +118,7 @@
       <!-- Desktop Nav: Links Diretos, Fluidos e 100% Livres de Truncamento -->
       <nav class="hidden lg:flex items-center gap-1 xl:gap-2 2xl:gap-3.5 text-xs xl:text-sm font-medium text-slate-300">
         <a href="#diferenciais" class="hover:text-brand-400 px-1.5 xl:px-2 py-1 rounded-lg hover:bg-slate-800/40 transition shrink-0">Diferenciais</a>
+        <a href="#recursos" class="hover:text-teal-300 px-1.5 xl:px-2 py-1 rounded-lg hover:bg-slate-800/40 transition shrink-0">Telas Reais</a>
         
         <!-- Destaque: Central de Micro-Demos ao Vivo -->
         <a href="#microdemos" class="hover:text-brand-400 transition text-emerald-400 font-semibold flex items-center gap-1 shrink-0 px-2 py-1 rounded-lg bg-emerald-950/40 border border-emerald-500/30 hover:border-emerald-500/50">
@@ -163,6 +171,9 @@
         <a href="#diferenciais" onclick="closeMobileMenu()" class="p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-800 flex items-center gap-2 text-white">
           <span>🛡️</span> Diferenciais
         </a>
+        <a href="#recursos" onclick="closeMobileMenu()" class="p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-800 flex items-center gap-2 text-white">
+          <span>📱</span> Telas Reais
+        </a>
         <a href="#microdemos" onclick="closeMobileMenu()" class="p-2.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-center gap-2 text-emerald-300 font-bold">
           <span>⚡</span> Demos ao Vivo
         </a>
@@ -177,6 +188,9 @@
         </a>
         <a href="#faq" onclick="closeMobileMenu()" class="p-2.5 rounded-xl bg-slate-800/60 hover:bg-slate-800 flex items-center gap-2 text-white">
           <span>❓</span> Dúvidas (FAQ)
+        </a>
+        <a href="#waitlistModal" onclick="closeMobileMenu(); openWaitlistModal(); return false;" class="p-2.5 rounded-xl bg-teal-950/40 border border-teal-500/30 flex items-center gap-2 text-teal-300 font-bold">
+          <span>👑</span> Lista de Espera
         </a>
       </div>
       <div class="pt-1 flex items-center justify-between gap-3">
@@ -510,6 +524,212 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SEÇÃO: TELAS REAIS & RECURSOS DO SISTEMA (CARROSSEL HORIZONTAL TOUCH) ==================== -->
+  <section id="recursos" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
+      <div class="max-w-2xl space-y-2">
+        <span class="text-xs font-bold uppercase tracking-wider text-teal-400 flex items-center gap-1.5">
+          <span>✨</span> Experiência Visual de Alto Padrão
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Veja as Telas Reais do Synapsis Clínico.
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Interface concebida especificamente para psicologia e neuropsicologia. Deslize horizontalmente ou clique em qualquer tela para ampliar em alta definição.
+        </p>
+      </div>
+
+      <!-- Setas e Contador de Navegação -->
+      <div class="flex items-center gap-3 shrink-0 self-start sm:self-end">
+        <span id="recursos-counter" class="text-xs font-bold px-3 py-1 rounded-full bg-slate-900 border border-slate-700/80 text-teal-300">
+          1 de 6
+        </span>
+        <div class="flex items-center gap-1.5">
+          <button 
+            id="recursos-prev-btn" 
+            type="button" 
+            aria-label="Ver recurso anterior" 
+            title="Recurso anterior"
+            class="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-700 hover:border-teal-400 text-slate-300 hover:text-white flex items-center justify-center transition-all shadow-md active:scale-95 focus:outline-none cursor-pointer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button 
+            id="recursos-next-btn" 
+            type="button" 
+            aria-label="Ver próximo recurso" 
+            title="Próximo recurso"
+            class="w-10 h-10 rounded-xl bg-slate-900/90 border border-slate-700 hover:border-teal-400 text-slate-300 hover:text-white flex items-center justify-center transition-all shadow-md active:scale-95 focus:outline-none cursor-pointer"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carrossel Horizontal com Snap Touch-Friendly -->
+    <div class="relative">
+      <div 
+        id="recursos-carousel" 
+        class="flex gap-5 sm:gap-6 overflow-x-auto snap-x snap-mandatory pb-4 pt-1 no-scrollbar scroll-smooth -mx-4 px-4 sm:mx-0 sm:px-0"
+      >
+        
+        <!-- Card 1: Prontuário CFP com Hash SHA-256 -->
+        <div class="recurso-card w-[86vw] max-w-[340px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-emerald-500/50 transition group overflow-hidden shadow-xl flex flex-col justify-between">
+          <div class="h-60 sm:h-64 p-2.5 bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-center overflow-hidden relative cursor-pointer group/img" onclick="zoomImage(this.querySelector('img'))">
+            <img src="previews/preview_prontuario.png" alt="Prontuário Imutável CFP 06/2019" class="w-full h-full object-cover object-top rounded-xl group-hover/img:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-emerald-950/80 text-[10px] text-emerald-300 font-bold border border-emerald-500/40 backdrop-blur-sm shadow">
+              🛡️ CFP 06/2019
+            </span>
+            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-[11px] text-teal-300 font-bold border border-teal-500/30 backdrop-blur-sm flex items-center gap-1 shadow-lg">
+              <span>🔍</span> Ampliar
+            </span>
+          </div>
+          <div class="p-6 space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">🔒</span>
+              <h3 class="text-base font-extrabold text-white">Prontuário Imutável com Hash SHA-256</h3>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Guiado nas 5 seções da Resolução CFP 06/2019 com criptografia AES-256-GCM. Ao assinar a evolução, o sistema gera prova pericial irreversível contra edições retroativas.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: Agenda Visual & Torre de Recepção ao Vivo -->
+        <div class="recurso-card w-[86vw] max-w-[340px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-teal-500/50 transition group overflow-hidden shadow-xl flex flex-col justify-between">
+          <div class="h-60 sm:h-64 p-2.5 bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-center overflow-hidden relative cursor-pointer group/img" onclick="zoomImage(this.querySelector('img'))">
+            <img src="previews/preview_agenda_cheia.png" alt="Agenda e Recepção ao Vivo" class="w-full h-full object-cover object-top rounded-xl group-hover/img:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-teal-950/80 text-[10px] text-teal-300 font-bold border border-teal-500/40 backdrop-blur-sm shadow">
+              ⚡ Tempo Real
+            </span>
+            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-[11px] text-teal-300 font-bold border border-teal-500/30 backdrop-blur-sm flex items-center gap-1 shadow-lg">
+              <span>🔍</span> Ampliar
+            </span>
+          </div>
+          <div class="p-6 space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📅</span>
+              <h3 class="text-base font-extrabold text-white">Agenda Visual & Torre de Recepção</h3>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Painel de atendimentos ao vivo com pulso verde em tempo real, confirmações éticas via WhatsApp e roteamento automático para pais e tutores legais de menores.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Módulo de Avaliação Neuropsicológica -->
+        <div class="recurso-card w-[86vw] max-w-[340px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-neuro-500/50 transition group overflow-hidden shadow-xl flex flex-col justify-between">
+          <div class="h-60 sm:h-64 p-2.5 bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-center overflow-hidden relative cursor-pointer group/img" onclick="zoomImage(this.querySelector('img'))">
+            <img src="previews/preview_neuro.png" alt="Módulo de Avaliação Neuropsicológica" class="w-full h-full object-cover object-top rounded-xl group-hover/img:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-indigo-950/80 text-[10px] text-indigo-300 font-bold border border-indigo-500/40 backdrop-blur-sm shadow">
+              🧠 Neuro Exclusivo
+            </span>
+            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-[11px] text-teal-300 font-bold border border-teal-500/30 backdrop-blur-sm flex items-center gap-1 shadow-lg">
+              <span>🔍</span> Ampliar
+            </span>
+          </div>
+          <div class="p-6 space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📊</span>
+              <h3 class="text-base font-extrabold text-white">Avaliação Neuropsicológica & Laudos</h3>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Gestão de pacotes avaliativos de 6 a 10 sessões, testes psicométricos (WISC, WAIS, BPA, Neupsilin) com cálculo de percentis normativos e gerador de laudos com CID-11 e DSM-5.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4: Suíte Fiscal 360° (Carnê-Leão e NFS-e) -->
+        <div class="recurso-card w-[86vw] max-w-[340px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/50 transition group overflow-hidden shadow-xl flex flex-col justify-between">
+          <div class="h-60 sm:h-64 p-2.5 bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-center overflow-hidden relative cursor-pointer group/img" onclick="zoomImage(this.querySelector('img'))">
+            <img src="previews/preview_carne_leao.png" alt="Carnê-Leão Oficial e NFS-e" class="w-full h-full object-cover object-top rounded-xl group-hover/img:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-amber-950/80 text-[10px] text-amber-300 font-bold border border-amber-500/40 backdrop-blur-sm shadow">
+              🏛️ Receita Federal
+            </span>
+            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-[11px] text-teal-300 font-bold border border-teal-500/30 backdrop-blur-sm flex items-center gap-1 shadow-lg">
+              <span>🔍</span> Ampliar
+            </span>
+          </div>
+          <div class="p-6 space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📑</span>
+              <h3 class="text-base font-extrabold text-white">Carnê-Leão Oficial & NFS-e em Lote</h3>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Exportação oficial para o programa da Receita Federal com livro-caixa digital, deduções automáticas de sublocação de salas e emissão em 1 clique de NFS-e direta.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5: Engenharia de Repasse & Painel Financeiro com PIX -->
+        <div class="recurso-card w-[86vw] max-w-[340px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 transition group overflow-hidden shadow-xl flex flex-col justify-between">
+          <div class="h-60 sm:h-64 p-2.5 bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-center overflow-hidden relative cursor-pointer group/img" onclick="zoomImage(this.querySelector('img'))">
+            <img src="previews/test_sanitized_dashboard.png" alt="Dashboard Financeiro e Rateio de Repasses" class="w-full h-full object-cover object-top rounded-xl group-hover/img:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-teal-950/80 text-[10px] text-teal-300 font-bold border border-teal-500/40 backdrop-blur-sm shadow">
+              💰 Regra de Ouro
+            </span>
+            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-[11px] text-teal-300 font-bold border border-teal-500/30 backdrop-blur-sm flex items-center gap-1 shadow-lg">
+              <span>🔍</span> Ampliar
+            </span>
+          </div>
+          <div class="p-6 space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">💳</span>
+              <h3 class="text-base font-extrabold text-white">Engenharia de Repasse & Extratos com PIX</h3>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Fim das discussões de fechamento de mês: apenas sessões pagas entram no rateio, com lotes periódicos, deduções de sala e extratos timbrados em PDF com chave PIX.
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 6: Gestão de Menores & Synapsis Kids -->
+        <div class="recurso-card w-[86vw] max-w-[340px] md:w-[calc((100%-1.5rem)/2)] lg:w-[calc((100%-3rem)/3)] shrink-0 snap-start rounded-3xl bg-slate-900/90 border border-slate-800 hover:border-pink-500/50 transition group overflow-hidden shadow-xl flex flex-col justify-between">
+          <div class="h-60 sm:h-64 p-2.5 bg-gradient-to-b from-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-center overflow-hidden relative cursor-pointer group/img" onclick="zoomImage(this.querySelector('img'))">
+            <img src="previews/synapsis_kids_mockup.png" alt="Ecossistema Synapsis Kids e Responsáveis" class="w-full h-full object-cover object-top rounded-xl group-hover/img:scale-105 transition duration-500">
+            <span class="absolute top-4 left-4 px-2.5 py-1 rounded-full bg-pink-950/80 text-[10px] text-pink-300 font-bold border border-pink-500/40 backdrop-blur-sm shadow">
+              🧸 Proteção à Infância
+            </span>
+            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-full bg-slate-950/85 text-[11px] text-teal-300 font-bold border border-teal-500/30 backdrop-blur-sm flex items-center gap-1 shadow-lg">
+              <span>🔍</span> Ampliar
+            </span>
+          </div>
+          <div class="p-6 space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xl">📱</span>
+              <h3 class="text-base font-extrabold text-white">Área de Responsáveis & Synapsis Kids</h3>
+            </div>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Roteamento seguro de cobranças e recados para múltiplos tutores de menores, integrado ao Synapsis Kids com pranchas de rotina visual PECS para pacientes em desenvolvimento.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Indicadores de Paginação / Dots + Dica Mobile -->
+    <div class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-3 pt-2">
+      <!-- Dica tátil exclusiva para mobile -->
+      <div class="flex items-center gap-2 text-xs text-slate-400 sm:hidden">
+        <span class="inline-block animate-pulse">👈</span>
+        <span class="font-medium text-slate-300">Deslize para o lado para ver todas as telas</span>
+        <span class="inline-block animate-pulse">👉</span>
+      </div>
+
+      <!-- Bolinhas Interativas (Dots) -->
+      <div class="flex items-center justify-center gap-2 mx-auto sm:mx-0" id="recursos-dots">
+        <button class="recurso-dot h-2.5 rounded-full transition-all duration-300 bg-teal-400 w-8 shadow-[0_0_12px_rgba(45,212,191,0.6)] cursor-pointer" data-index="0" aria-label="Ir para tela 1 (Prontuário CFP)"></button>
+        <button class="recurso-dot h-2.5 rounded-full transition-all duration-300 bg-slate-700 w-2.5 hover:bg-slate-500 cursor-pointer" data-index="1" aria-label="Ir para tela 2 (Agenda e Recepção)"></button>
+        <button class="recurso-dot h-2.5 rounded-full transition-all duration-300 bg-slate-700 w-2.5 hover:bg-slate-500 cursor-pointer" data-index="2" aria-label="Ir para tela 3 (Neuropsicologia)"></button>
+        <button class="recurso-dot h-2.5 rounded-full transition-all duration-300 bg-slate-700 w-2.5 hover:bg-slate-500 cursor-pointer" data-index="3" aria-label="Ir para tela 4 (Carnê-Leão)"></button>
+        <button class="recurso-dot h-2.5 rounded-full transition-all duration-300 bg-slate-700 w-2.5 hover:bg-slate-500 cursor-pointer" data-index="4" aria-label="Ir para tela 5 (Repasses PIX)"></button>
+        <button class="recurso-dot h-2.5 rounded-full transition-all duration-300 bg-slate-700 w-2.5 hover:bg-slate-500 cursor-pointer" data-index="5" aria-label="Ir para tela 6 (Synapsis Kids)"></button>
       </div>
     </div>
   </section>
@@ -3959,9 +4179,34 @@
       }
     }
 
+    // ============================================================
+    // MODAL DE ZOOM / LIGHTBOX DE TELAS REAIS
+    // ============================================================
+    function zoomImage(img) {
+      if (!img) return;
+      const modal = document.getElementById('zoom-modal');
+      const zoomImg = document.getElementById('zoom-img');
+      if (!modal || !zoomImg) return;
+      zoomImg.src = img.src;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeZoom(e) {
+      if (e) e.stopPropagation();
+      const modal = document.getElementById('zoom-modal');
+      if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    }
+
     // Close modal on Escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeWaitlistModal();
+      if (e.key === 'Escape') {
+        closeWaitlistModal();
+        closeZoom();
+      }
     });
 
     // Close modal on backdrop click
@@ -3971,6 +4216,109 @@
         closeWaitlistModal();
       }
     });
+
+    // ============================================================
+    // CARROSSEL HORIZONTAL DE RECURSOS (TOUCH, SETAS E DOTS)
+    // ============================================================
+    function setupRecursosCarousel() {
+      const container = document.getElementById('recursos-carousel');
+      const prevBtn = document.getElementById('recursos-prev-btn');
+      const nextBtn = document.getElementById('recursos-next-btn');
+      const dots = document.querySelectorAll('.recurso-dot');
+      const counter = document.getElementById('recursos-counter');
+      if (!container) return;
+
+      function getScrollStep() {
+        const card = container.querySelector('.recurso-card');
+        if (!card) return 320;
+        const style = window.getComputedStyle(container);
+        const gap = parseFloat(style.gap) || 20;
+        return card.offsetWidth + gap;
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+          container.scrollBy({ left: -getScrollStep(), behavior: 'smooth' });
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+          container.scrollBy({ left: getScrollStep(), behavior: 'smooth' });
+        });
+      }
+
+      dots.forEach(function(dot) {
+        dot.addEventListener('click', function() {
+          const idx = parseInt(this.getAttribute('data-index') || '0', 10);
+          const cards = container.querySelectorAll('.recurso-card');
+          if (cards[idx]) {
+            cards[idx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          }
+        });
+      });
+
+      function updateCarouselState() {
+        const cards = container.querySelectorAll('.recurso-card');
+        if (!cards.length) return;
+        const scrollLeft = container.scrollLeft;
+
+        let closestIdx = 0;
+        if (scrollLeft <= 15) {
+          closestIdx = 0;
+        } else if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 15) {
+          closestIdx = cards.length - 1;
+        } else {
+          const containerWidth = container.offsetWidth;
+          const scrollCenter = scrollLeft + containerWidth / 2;
+          let minDiff = Infinity;
+
+          cards.forEach(function(card, idx) {
+            const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+            const diff = Math.abs(cardCenter - scrollCenter);
+            if (diff < minDiff) {
+              minDiff = diff;
+              closestIdx = idx;
+            }
+          });
+        }
+
+        // Atualizar dots
+        dots.forEach(function(dot, idx) {
+          if (idx === closestIdx) {
+            dot.className = 'recurso-dot h-2.5 rounded-full transition-all duration-300 bg-teal-400 w-8 shadow-[0_0_12px_rgba(45,212,191,0.6)] cursor-pointer';
+          } else {
+            dot.className = 'recurso-dot h-2.5 rounded-full transition-all duration-300 bg-slate-700 w-2.5 hover:bg-slate-500 cursor-pointer';
+          }
+        });
+
+        // Atualizar contador de texto
+        if (counter) {
+          counter.textContent = (closestIdx + 1) + ' de ' + cards.length;
+        }
+
+        // Atualizar estado das setas
+        if (prevBtn) {
+          if (container.scrollLeft <= 10) {
+            prevBtn.classList.add('opacity-40');
+          } else {
+            prevBtn.classList.remove('opacity-40');
+          }
+        }
+        if (nextBtn) {
+          const maxScroll = container.scrollWidth - container.clientWidth - 10;
+          if (container.scrollLeft >= maxScroll) {
+            nextBtn.classList.add('opacity-40');
+          } else {
+            nextBtn.classList.remove('opacity-40');
+          }
+        }
+      }
+
+      container.addEventListener('scroll', updateCarouselState, { passive: true });
+      window.addEventListener('resize', updateCarouselState);
+      updateCarouselState();
+    }
 
     // Formatação automática em tempo real do WhatsApp / Celular: (DD) 9XXXX-XXXX
     function formatWhatsAppInput(input) {
@@ -4005,10 +4353,15 @@
       });
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initWhatsAppMasks);
-    } else {
+    function initPageScripts() {
       initWhatsAppMasks();
+      setupRecursosCarousel();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPageScripts);
+    } else {
+      initPageScripts();
     }
 
     // Handle Waitlist Form Submission (both in-page form and modal)
@@ -4207,6 +4560,21 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Modal de Zoom Lightbox para Telas Reais -->
+  <div id="zoom-modal" onclick="closeZoom()" class="fixed inset-0 z-[99999] bg-[#090D16]/95 backdrop-blur-md hidden items-center justify-center p-3 sm:p-6 cursor-zoom-out">
+    <button onclick="closeZoom(event)" aria-label="Fechar zoom da tela" class="absolute top-4 right-4 sm:top-6 sm:right-6 w-11 h-11 rounded-full bg-slate-800 text-white border border-slate-600 flex items-center justify-center text-lg font-bold shadow-2xl active:scale-90 hover:bg-slate-700 transition z-50">
+      ✕
+    </button>
+    <div class="relative max-w-full max-h-full flex flex-col items-center justify-center" onclick="event.stopPropagation()">
+      <img id="zoom-img" src="" alt="Tela Ampliada do Synapsis Clínico" class="max-w-[96vw] max-h-[85vh] object-contain rounded-2xl shadow-2xl border border-white/15">
+      <div class="mt-3 flex items-center gap-2">
+        <button onclick="closeZoom(event)" class="px-4 py-1.5 rounded-full bg-slate-800/90 text-xs text-slate-300 font-semibold border border-slate-700 hover:text-white flex items-center gap-1.5 shadow">
+          <span>Toque para fechar</span> ✕
+        </button>
+      </div>
     </div>
   </div>
 </body>
