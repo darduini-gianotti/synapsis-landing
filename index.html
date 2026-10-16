@@ -2,7 +2,7 @@
 <html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Synapsis Clínico — Ciência Clínica, Neuropsicologia e Gestão em Perfeita Sintonia</title>
   <meta name="description" content="Plataforma líder para clínicas de psicologia e neuropsicologia. Prontuário com prova criptográfica SHA-256 (CFP 06/2019) e Módulo Neuropsicológico exclusivo.">
   <link rel="icon" type="image/png" href="synapsi_app_icon.png">
@@ -89,8 +89,14 @@
       -ms-overflow-style: none;
       scrollbar-width: none;
     }
+    /* Previne auto-zoom invasivo no iOS Safari em inputs/selects */
+    @media screen and (max-width: 640px) {
+      input, select, textarea {
+        font-size: 16px !important;
+      }
+    }
   </style>
-  <script src="/landing/landingVariants.js"></script>
+  <script src="landingVariants.js" defer></script>
 </head>
 <body class="bg-slate-900 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
@@ -387,7 +393,7 @@
   </section>
 
   <!-- ==================== SEÇÃO: AS 4 ESPECIALIDADES DOS CONSELHOS DE CLASSE ==================== -->
-  <section id="especialidades" class="py-20 sm:py-24 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
+  <section id="especialidades" class="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-24 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-b border-slate-800">
     <div class="absolute -top-32 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-32 right-1/4 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -568,7 +574,7 @@
   </section>
 
   <!-- ==================== SEÇÃO: PROJETO TERAPÊUTICO SINGULAR (PTS) ==================== -->
-  <section id="pts" class="py-20 sm:py-24 relative overflow-hidden bg-slate-900 border-b border-slate-800">
+  <section id="pts" class="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-24 relative overflow-hidden bg-slate-900 border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
@@ -694,7 +700,7 @@
   </section>
 
   <!-- ==================== SEÇÃO 4: OS 4 PILARES DE VALOR ==================== -->
-  <section id="diferenciais" class="py-24 relative">
+  <section id="diferenciais" class="scroll-mt-20 sm:scroll-mt-24 py-24 relative">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center max-w-3xl mx-auto space-y-4 mb-16">
         <span class="text-brand-400 text-xs font-bold uppercase tracking-wider">Diferenciais Inegociáveis</span>
@@ -848,7 +854,7 @@
   </section>
 
   <!-- ==================== SEÇÃO: TELAS REAIS & RECURSOS DO SISTEMA (CARROSSEL HORIZONTAL TOUCH) ==================== -->
-  <section id="recursos" class="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+  <section id="recursos" class="scroll-mt-20 sm:scroll-mt-24 py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-10">
       <div class="max-w-2xl space-y-2">
         <span class="text-xs font-bold uppercase tracking-wider text-teal-400 flex items-center gap-1.5">
@@ -1031,7 +1037,7 @@
   </section>
 
 <!-- ==================== SEÇÃO: VEJA NA PRÁTICA (MICRO-DEMOS INTERATIVAS) ==================== -->
-  <section id="microdemos" class="py-24 bg-slate-900/90 border-b border-slate-800 relative overflow-hidden">
+  <section id="microdemos" class="scroll-mt-20 sm:scroll-mt-24 py-24 bg-slate-900/90 border-b border-slate-800 relative overflow-hidden">
     <!-- Background subtle glows -->
     <div class="absolute -top-24 right-1/4 w-96 h-96 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute -bottom-24 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -2481,7 +2487,7 @@
 
     </div>
   <!-- ==================== SEÇÃO: SYNAPSIS KIDS & ROTINA VISUAL (LEAD MAGNET & ENGAJAMENTO FAMILIAR) ==================== -->
-  <section id="kids" class="py-20 sm:py-24 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-slate-800">
+  <section id="kids" class="scroll-mt-20 sm:scroll-mt-24 py-20 sm:py-24 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 border-t border-slate-800">
     <!-- Ambient Glows -->
     <div class="absolute top-1/4 left-10 w-[500px] h-[500px] bg-pink-600/10 rounded-full blur-3xl pointer-events-none"></div>
     <div class="absolute bottom-10 right-10 w-[500px] h-[500px] bg-teal-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -3264,7 +3270,7 @@
   </section>
 
 <!-- ==================== SEÇÃO 8: PLANOS E PRECIFICAÇÃO OFICIAL ==================== -->
-  <section id="planos" class="py-24 relative overflow-hidden bg-slate-950/70 border-t border-slate-800">
+  <section id="planos" class="scroll-mt-20 sm:scroll-mt-24 py-24 relative overflow-hidden bg-slate-950/70 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <!-- Cabeçalho da Seção de Planos -->
@@ -3650,7 +3656,7 @@
   </section>
 
 <!-- ==================== SEÇÃO 10: FAQ COM ACORDEÃO INTERATIVO ==================== -->
-  <section id="faq" class="py-20">
+  <section id="faq" class="scroll-mt-20 sm:scroll-mt-24 py-20">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center space-y-3 mb-12">
         <span class="text-brand-400 text-xs font-bold uppercase tracking-wider">Tire Suas Dúvidas</span>
@@ -4085,9 +4091,9 @@
             <div>
               <label class="block font-semibold text-slate-300 mb-1">Plano de Interesse</label>
               <select id="pagePlan" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-teal-400 focus:outline-none transition cursor-pointer">
-                <option value="Solo">Plano Solo Especialidades (R$ 69/mês)</option>
-                <option value="Parceria PJ" selected>Plano Consultório Parceria / PJ (R$ 99/mês)</option>
-                <option value="Clínica">Plano Clínica Multiprofissional & Equipes (R$ 129/mês)</option>
+                <option value="Solo">Plano Solo Especialista (a partir de R$ 49/mês)</option>
+                <option value="Parceria PJ" selected>Plano Parceria &amp; Duplas Multi (a partir de R$ 89/mês)</option>
+                <option value="Clínica">Plano Clínica Multidisciplinar (a partir de R$ 179/mês)</option>
               </select>
             </div>
           </div>
@@ -4855,6 +4861,11 @@
         modal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
       }
+      const stickyBar = document.getElementById('mobileStickyBar');
+      if (stickyBar) stickyBar.classList.add('hidden');
+      const waBtn = document.getElementById('floatingWhatsApp');
+      if (waBtn) waBtn.classList.add('hidden');
+
       const targetPlan = planName && planName !== 'contrato' ? planName : (window.__SYNAPSIS_DEFAULT_PLAN__ || 'MULTI');
       const modalPlan = document.getElementById('modalPlan');
       if (modalPlan) modalPlan.value = targetPlan;
@@ -4868,6 +4879,10 @@
         modal.classList.add('hidden');
         document.body.style.overflow = '';
       }
+      const stickyBar = document.getElementById('mobileStickyBar');
+      if (stickyBar) stickyBar.classList.remove('hidden');
+      const waBtn = document.getElementById('floatingWhatsApp');
+      if (waBtn) waBtn.classList.remove('hidden');
     }
 
     // ============================================================
@@ -5213,10 +5228,10 @@
 
   <!-- ==================== MODAL DA LISTA DE ESPERA / CLUBE DAS FUNDADORAS ==================== -->
   <div id="waitlistModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md hidden transition-opacity duration-300">
-    <div class="relative w-full max-w-lg bg-slate-900 border-2 border-teal-500/40 rounded-3xl shadow-2xl p-6 sm:p-8 space-y-5 max-h-[92vh] overflow-y-auto">
+    <div class="relative w-full max-w-lg bg-slate-900 border-2 border-teal-500/40 rounded-2xl sm:rounded-3xl shadow-2xl p-5 sm:p-8 space-y-4 sm:space-y-5 max-h-[88dvh] sm:max-h-[92vh] overflow-y-auto overscroll-contain">
       
-      <!-- Botão Fechar -->
-      <button onclick="closeWaitlistModal()" class="absolute top-5 right-5 p-2 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-400 hover:text-white transition cursor-pointer" aria-label="Fechar Modal">
+      <!-- Botão Fechar com touch target generoso -->
+      <button onclick="closeWaitlistModal()" class="absolute top-4 right-4 sm:top-5 sm:right-5 p-2.5 sm:p-2 min-w-[44px] min-h-[44px] flex items-center justify-center rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-400 hover:text-white transition cursor-pointer" aria-label="Fechar Modal">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
 
@@ -5286,13 +5301,13 @@
         <div>
           <label class="block font-semibold text-slate-300 mb-1">Plano de Interesse para os 3 Meses Grátis</label>
           <select id="modalPlan" class="w-full px-3.5 py-2.5 rounded-xl bg-slate-800 border border-slate-700 text-white focus:border-teal-400 focus:outline-none transition cursor-pointer">
-            <option value="PSICO_SOLO">Psicologia Solo (R$ 69/mês - 3 Meses Grátis)</option>
-            <option value="NEURO_SOLO">Neuropsicologia Solo (R$ 69/mês - 3 Meses Grátis)</option>
-            <option value="FONO_SOLO">Fonoaudiologia Solo (R$ 69/mês - 3 Meses Grátis)</option>
-            <option value="TO_SOLO">Terapia Ocupacional Solo (R$ 69/mês - 3 Meses Grátis)</option>
-            <option value="PSICOPED_SOLO">Psicopedagogia Solo (R$ 69/mês - 3 Meses Grátis)</option>
-            <option value="PARCERIA_PJ">Consultório Parceria / PJ (R$ 99/mês)</option>
-            <option value="MULTI" selected>Clínica Multidisciplinar (Psico + Fono + TO + Psicoped + PTS)</option>
+            <option value="PSICO_SOLO">Psicologia Solo (a partir de R$ 49/mês)</option>
+            <option value="NEURO_SOLO">Neuropsicologia Solo (a partir de R$ 49/mês)</option>
+            <option value="FONO_SOLO">Fonoaudiologia Solo (a partir de R$ 49/mês)</option>
+            <option value="TO_SOLO">Terapia Ocupacional Solo (a partir de R$ 49/mês)</option>
+            <option value="PSICOPED_SOLO">Psicopedagogia Solo (a partir de R$ 49/mês)</option>
+            <option value="PARCERIA_PJ">Parceria &amp; Duplas Multi (a partir de R$ 89/mês)</option>
+            <option value="MULTI" selected>Clínica Multidisciplinar (a partir de R$ 179/mês)</option>
           </select>
         </div>
 
@@ -5337,5 +5352,40 @@
       </div>
     </div>
   </div>
+
+  <!-- ==================== BARRA FLUTUANTE MOBILE & WHATSAPP ==================== -->
+  <!-- Barra Flutuante Mobile de Ação Rápida (Sticky Mobile CTA) -->
+  <div id="mobileStickyBar" class="fixed bottom-0 left-0 right-0 z-40 bg-slate-900/95 backdrop-blur-lg border-t border-slate-800 px-4 py-2.5 flex items-center justify-between gap-3 transform translate-y-full transition-transform duration-300 md:hidden shadow-2xl" style="padding-bottom: max(0.625rem, env(safe-area-inset-bottom));">
+    <div class="flex flex-col">
+      <span class="text-[10px] text-teal-400 font-extrabold uppercase tracking-wider flex items-center gap-1">
+        <span class="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse"></span>
+        Turma Pioneira
+      </span>
+      <span class="text-xs font-bold text-white">A partir de R$ 49/mês</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="openWaitlistModal()" class="px-4 py-2 rounded-xl bg-gradient-to-r from-teal-400 to-emerald-400 text-slate-950 font-black text-xs shadow-md shadow-teal-500/25 active:scale-95 transition cursor-pointer">
+        Testar Grátis →
+      </button>
+    </div>
+  </div>
+
+  <!-- Botão Flutuante de Atendimento WhatsApp -->
+  <a id="floatingWhatsApp" href="https://wa.me/5511999998888?text=Ol%C3%A1!%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida%20sobre%20o%20Synapsis%20Cl%C3%ADnico." target="_blank" rel="noopener noreferrer" aria-label="Atendimento via WhatsApp" class="fixed bottom-16 md:bottom-6 right-4 md:right-6 z-40 w-12 h-12 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white flex items-center justify-center shadow-lg shadow-emerald-500/35 hover:scale-105 active:scale-95 transition cursor-pointer" title="Falar no WhatsApp">
+    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2zm5.78 14.07c-.24.68-1.39 1.33-1.92 1.41-.5.08-1.13.11-3.66-.9-2.73-1.08-4.49-3.86-4.63-4.04-.14-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.95-2.25.25-.27.55-.34.73-.34.18 0 .37.01.52.02.17.01.4.06.62.53.24.52.82 2 .89 2.15.07.15.12.33.02.53-.1.2-.15.32-.3.49-.15.17-.32.38-.45.51-.15.15-.31.31-.13.62.18.31.8 1.32 1.72 2.14 1.18 1.05 2.18 1.38 2.49 1.53.31.15.49.13.67-.08.18-.21.78-.91.99-1.22.21-.31.42-.26.7-.15.28.11 1.78.84 2.08.99.3.15.5.23.57.36.07.12.07.72-.17 1.4z"/></svg>
+  </a>
+
+  <script>
+    // Controle da Barra Flutuante Mobile
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('mobileStickyBar');
+      if (!bar) return;
+      if (window.scrollY > 350) {
+        bar.classList.remove('translate-y-full');
+      } else {
+        bar.classList.add('translate-y-full');
+      }
+    }, { passive: true });
+  </script>
 </body>
 </html>
