@@ -24,21 +24,21 @@
 
   const VARIANTS = {
     multi: {
-      docTitle: 'Synapsis Clínico — O Ecossistema Completo do Neurodesenvolvimento Infantil',
-      metaDesc: 'A plataforma definitiva para clínicas multidisciplinares de neurodesenvolvimento: Psicologia, Fonoaudiologia e Terapia Ocupacional com prontuários interdisciplinares integrados.',
+      docTitle: 'Synapsis Clínico — Do Consultório Solo à Clínica: Neurodesenvolvimento, Cognição & Reabilitação',
+      metaDesc: 'A plataforma definitiva para consultórios e clínicas: Psicologia, Fonoaudiologia, Terapia Ocupacional e Psicopedagogia com prontuários normatizados para todas as idades.',
       pillTagHtml: `
         <span class="flex h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-emerald-400 badge-pulse"></span>
-        <span>✨ Tripé do Neurodesenvolvimento • Multidisciplinar</span>
-        <span class="hidden sm:inline-block px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 text-[10px] font-black uppercase tracking-wider">Psico + Fono + TO</span>
+        <span>✨ Do Consultório Solo à Clínica Multiprofissional</span>
+        <span class="hidden sm:inline-block px-2 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 text-[10px] font-black uppercase tracking-wider">CFP • CFFa • COFFITO • ABPp</span>
       `,
       headlineHtml: `
-        A Plataforma Definitiva para Clínicas de <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-teal-300 to-neuro-500">Neurodesenvolvimento Infantil</span>.
+        A Plataforma Definitiva para Especialistas em <span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-400 via-teal-300 to-neuro-500">Neurodesenvolvimento, Cognição e Reabilitação</span>.
       `,
       subheadlineHtml: `
-        O software integrado que unifica <strong>Psicologia (CFP)</strong>, <strong>Fonoaudiologia (CFFa)</strong> e <strong>Terapia Ocupacional (COFFITO)</strong> em um prontuário interdisciplinar inteligente e de fácil leitura para médicos e famílias.
+        Desenvolvido para profissionais autônomos e equipes multiprofissionais. Prontuários nativos para <strong>Psicologia (CFP)</strong>, <strong>Fonoaudiologia (CFFa)</strong>, <strong>Terapia Ocupacional (COFFITO)</strong> e <strong>Psicopedagogia (ABPp)</strong> — com rigor técnico e conformidade ética para acompanhar pacientes da infância à vida adulta.
       `,
       defaultPlan: 'MULTI',
-      ctaText: '👑 Conhecer o Plano Multidisciplinar (Turma Pioneira)'
+      ctaText: '👑 Conhecer os Planos & Vagas (Clube das Fundadoras)'
     },
     fono: {
       docTitle: 'Synapsis Fono — Software Clínico para Fonoaudiologia, Cabine & PAC (CFFa 613/2021)',
